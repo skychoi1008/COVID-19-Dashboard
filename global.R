@@ -1,0 +1,11 @@
+library(shiny)
+library(stringr)
+library(ggplot2)
+library(tidyverse)
+library(data.table)
+library(shinydashboard)
+library(leaflet)
+
+mydata <- fread('https://raw.githubusercontent.com/datasets/covid-19/master/data/time-series-19-covid-combined.csv')
+mydata$Date <- as.Date(mydata$Date,format = "%Y-%m-%d")
+country <- data.frame(table(mydata$`Country/Region`))
